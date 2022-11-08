@@ -15,6 +15,8 @@ def show_board(board):
 
 def draw_broad(board,player):
     position = input("enter a position: ")
+    while board[3 * (int(position[1]) - 1) + int(position[3]) - 1] != 0:
+        position = input("enter a position (you can't put overlap): ")
     board[3 * (int(position[1]) - 1) + int(position[3]) - 1]  = player    #(1,2)
     show_board(board)
     print("----------------------------")
@@ -25,26 +27,26 @@ if __name__ == '__main__':
     while winner == None:
         print("TODO: take a turn!")
         show_board(board)
-        print("player 1")
+        print("player 1, please enter \"(rows,cols)\"")
         draw_broad(board,2)
         if win_check(board) == 2:
             winner = 'O'  
-            print(winner)
-        if win_check(board) == 5:
+            break
+        elif win_check(board) == 5:
             winner = 'X'  
-            print(winner)
-        if win_check(board) == 1:
+            break
+        elif win_check(board) == 1:
             winner = 'Draw'  
-            print(winner)
-        print("player 2")
+            break
+        print("player 2, please enter \"(rows,cols)\"")
         draw_broad(board,5)
         if win_check(board) == 2:
             winner = 'O'  
-            print(winner)
-        if win_check(board) == 5:
+            break
+        elif win_check(board) == 5:
             winner = 'X'  
-            print(winner)
-        if win_check(board) == 1:
+            break
+        elif win_check(board) == 1:
             winner = 'Draw'  
-            print(winner)
-    
+            break
+    print("winner is:"+winner)
